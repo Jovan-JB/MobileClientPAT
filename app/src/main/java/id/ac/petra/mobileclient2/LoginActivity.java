@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void performLogin(String username, String password) {
-        String url = "http://172.22.36.163:7000/loginuser";
+        String url = "http://192.168.0.105:7000/loginuser";
 
         try {
             JSONObject requestData = new JSONObject();

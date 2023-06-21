@@ -1,52 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
-
-    <TextView
-        android:id="@+id/txtTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Booking"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+    tools:context=".BookingActivity">
 
     <EditText
         android:id="@+id/usernameField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:hint="Username" />
+        android:hint="Username"
+        android:layout_margin="10dp" />
 
     <EditText
         android:id="@+id/teleponField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:hint="Telepon" />
+        android:layout_below="@id/usernameField"
+        android:hint="Telepon"
+        android:layout_margin="10dp" />
 
     <EditText
         android:id="@+id/waktuField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:hint="Waktu" />
+        android:layout_below="@id/teleponField"
+        android:hint="Waktu"
+        android:layout_margin="10dp" />
 
-    <EditText
+    <Spinner
         android:id="@+id/jenisField"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:hint="Jenis" />
+        android:layout_below="@id/waktuField"
+        android:layout_margin="10dp" />
 
     <Button
         android:id="@+id/bookButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Book" />
+        android:layout_below="@id/jenisField"
+        android:text="Book"
+        android:layout_margin="10dp" />
 
-</LinearLayout>
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/jenisField"
+        android:layout_toRightOf="@id/bookButton"
+        android:text="Back"
+        android:layout_margin="10dp" />
+
+</RelativeLayout>

@@ -16,7 +16,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".KendaraanAdapter"
+            android:name=".ListKendaraanTable"
             android:exported="false" />
         <activity
             android:name=".MainMenuActivity"
@@ -26,9 +26,6 @@
             android:exported="false" />
         <activity
             android:name=".BookingActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ListKendaraanActivity"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"

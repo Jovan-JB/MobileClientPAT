@@ -61,7 +61,7 @@ public class CancelBookingActivity extends Activity {
             @Override
             public void run() {
                 try {
-                    URL url = new URL("http://172.22.36.163:7000/cancelbooking"); // Replace with your server URL
+                    URL url = new URL("http://192.168.0.105:7000/cancelbooking"); // Replace with your server URL
 
                     HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                     connection.setRequestMethod("POST");

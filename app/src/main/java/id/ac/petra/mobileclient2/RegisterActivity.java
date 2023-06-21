@@ -25,7 +25,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText emailEditText;
     private Button registerButton;
 
-    private static final String REGISTER_URL = "http://172.22.36.163:7000/register";
+    private static final String REGISTER_URL = "http://192.168.0.105:7000/register";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

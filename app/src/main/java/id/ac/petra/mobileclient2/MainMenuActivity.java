@@ -46,7 +46,7 @@ public class MainMenuActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void openListKendaraanActivity() {
-        Intent intent = new Intent(this, ListKendaraanActivity.class);
+        Intent intent = new Intent(this, ListKendaraanTable.class);
         startActivity(intent);
     }
 

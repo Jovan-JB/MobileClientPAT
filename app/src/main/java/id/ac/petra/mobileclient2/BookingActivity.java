@@ -3,8 +3,10 @@ package id.ac.petra.mobileclient2;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,14 +18,17 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 public class BookingActivity extends AppCompatActivity {
 
     private EditText usernameField;
     private EditText teleponField;
     private EditText waktuField;
-    private EditText jenisField;
+    private Spinner jenisField;
     private Button bookButton;
+    private Button backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +40,25 @@ public class BookingActivity extends AppCompatActivity {
         waktuField = findViewById(R.id.waktuField);
         jenisField = findViewById(R.id.jenisField);
         bookButton = findViewById(R.id.bookButton);
+        backButton = findViewById(R.id.backButton);
+
+        // Create an array of jenis options
+        List<String> jenisOptions = new ArrayList<>();
+        jenisOptions.add("sedan");
+        jenisOptions.add("hatchback");
+        jenisOptions.add("suv");
+        jenisOptions.add("crossover");
+
+        ArrayAdapter<String> jenisAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, jenisOptions);
+        jenisAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        jenisField.setAdapter(jenisAdapter);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         bookButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,7 +66,7 @@ public class BookingActivity extends AppCompatActivity {
                 String username = usernameField.getText().toString().trim();
                 String telepon = teleponField.getText().toString().trim();
                 String waktu = waktuField.getText().toString().trim();
-                String jenis = jenisField.getText().toString().trim();
+                String jenis = jenisField.getSelectedItem().toString().trim();
 
                 if (username.isEmpty() || telepon.isEmpty() || waktu.isEmpty() || jenis.isEmpty()) {
                     Toast.makeText(BookingActivity.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
@@ -69,7 +93,7 @@ public class BookingActivity extends AppCompatActivity {
             String result = "";
             try {
                 String bookingData = params[0];
-                URL url = new URL("http://172.22.36.163:7000/booking");
+                URL url = new URL("http://192.168.0.105:7000/booking");
 
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("POST");
@@ -101,9 +125,10 @@ public class BookingActivity extends AppCompatActivity {
             return result;
         }
 
+
         @Override
         protected void onPostExecute(String result) {
-            Toast.makeText(BookingActivity.this, result, Toast.LENGTH_SHORT).show();
+            Toast.makeText(BookingActivity.this, "Berhasil Booking! Booking ID: " + result, Toast.LENGTH_SHORT).show();
         }
     }
 }
